@@ -1,6 +1,7 @@
 #!/bin/bash
-if [ -z "$1" ]; then
+if [[ -z "$1" || -z $(jq ". | select(."$1" != null)" config.json) ]]; then
     echo "Vous devez choisir un manga."
+    jq -r '. |= keys' config.json
     exit
 fi
 
