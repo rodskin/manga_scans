@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Vous devez choisir un manga."
+    exit
+fi
+
+MANGA=$1
+
+LAST_CHAPTER=$(tail -1 "${MANGA}.txt")
+echo "last chapter: "$LAST_CHAPTER
+
+NEW_CHAPTER=$((LAST_CHAPTER+1))
+if [[ $NEW_CHAPTER -lt 100  && `jq ."$MANGA".use_zero config.json` -eq 1 ]]; then
+    NEW_CHAPTER="0$NEW_CHAPTER"
+fi
+
+NEW_CHAPTER_URL=$(jq -r ."$MANGA".url config.json)"$NEW_CHAPTER/"
+
+CURL_RETURN=$(curl -o /dev/null -s -w "%{http_code}\n" "$NEW_CHAPTER_URL")
+
+if [ $CURL_RETURN -eq 200 ]; then
+    echo $NEW_CHAPTER_URL
+else
+    echo "Pas de nouveau chapitre"
+fi

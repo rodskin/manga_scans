@@ -1,0 +1,17 @@
+{
+	"attack_on_titan":
+	{
+		"url": "https://ww7.readsnk.com/chapter/shingeki-no-kyojin-chapter-",
+		"use_zero": 1
+	},
+	"goblin_slayer":
+	{
+		"url": "http://manga.watchgoblinslayer.com/chapter/goblin-slayer-chapter-",
+		"use_zero": 0
+	},
+	"kingdom":
+	{
+		"url": "https://ww2.readkingdom.com/chapter/kingdom-chapter-",
+		"use_zero": 1
+	}
+}
