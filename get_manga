@@ -11,16 +11,25 @@ LAST_CHAPTER=$(tail -1 "${MANGA}")
 echo "last chapter: "$LAST_CHAPTER
 
 NEW_CHAPTER=$((LAST_CHAPTER+1))
-if [[ $NEW_CHAPTER -lt 100  && `jq ."$MANGA".use_zero config.json` -eq 1 ]]; then
+
+while [[ ${#NEW_CHAPTER} -lt 3 && `jq ."$MANGA".use_zero config.json` -eq 1 ]]; do
     NEW_CHAPTER="0$NEW_CHAPTER"
+done
+
+NEW_CHAPTER_URL=$(jq -r ."$MANGA".url config.json)"$NEW_CHAPTER"
+
+if [[ `jq ."$MANGA".end_slash config.json` -eq 1 ]]; then
+    NEW_CHAPTER_URL="$NEW_CHAPTER_URL/"
 fi
 
-NEW_CHAPTER_URL=$(jq -r ."$MANGA".url config.json)"$NEW_CHAPTER/"
+NEW_CHAPTER_URL=${NEW_CHAPTER_URL//CHAPTER_ID/$NEW_CHAPTER}
+
 
 CURL_RETURN=$(curl -o /dev/null -s -w "%{http_code}\n" "$NEW_CHAPTER_URL")
 
-if [ $CURL_RETURN -eq 200 ]; then
-    echo $NEW_CHAPTER_URL
+
+if [[ $CURL_RETURN -eq 200 || $CURL_RETURN -eq 301 ]]; then
+    echo "New chapter: $NEW_CHAPTER_URL"
 else
-    echo "Pas de nouveau chapitre"
+    echo "No new chapter"
 fi

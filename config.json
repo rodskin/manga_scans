@@ -2,16 +2,25 @@
 	"attack_on_titan":
 	{
 		"url": "https://ww7.readsnk.com/chapter/shingeki-no-kyojin-chapter-",
-		"use_zero": 1
+		"use_zero": 1,
+        "end_slash": 1
 	},
 	"goblin_slayer":
 	{
 		"url": "http://manga.watchgoblinslayer.com/chapter/goblin-slayer-chapter-",
-		"use_zero": 0
+		"use_zero": 0,
+        "end_slash": 1
 	},
 	"kingdom":
 	{
 		"url": "https://ww2.readkingdom.com/chapter/kingdom-chapter-",
-		"use_zero": 1
-	}
+		"use_zero": 1,
+        "end_slash": 1
+	},
+    "tales_of_demons_and_gods":
+    {
+        "url": "https://mangapill.com/chapters/4270-10CHAPTER_ID000/tales-of-demons-and-gods-chapter-",
+		"use_zero": 1,
+        "end_slash": 0
+    }
 }
