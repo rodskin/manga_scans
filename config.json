@@ -22,5 +22,17 @@
         "url": "https://mangapill.com/chapters/4270-10CHAPTER_ID000/tales-of-demons-and-gods-chapter-",
 		"use_zero": 1,
         "end_slash": 0
+    },
+    "atelier_des_sorciers":
+    {
+        "url": "https://www.japscan.ws/lecture-en-ligne/l-atelier-des-sorciers/",
+        "use_zero": 0,
+        "end_slash": 1
+    },
+    "gantz":
+    {
+        "url": "https://read-gantz.com/manga/gantz-chapter-",
+        "use_zero": 0,
+        "end_slash": 1
     }
 }
