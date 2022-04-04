@@ -8,7 +8,7 @@ fi
 
 MANGA=$1
 
-LAST_CHAPTER=$(tail -1 "${MANGA}")
+LAST_CHAPTER=$(tail -1 "mangas/${MANGA}")
 echo "last chapter: "$LAST_CHAPTER
 
 NEW_CHAPTER=$((LAST_CHAPTER+1))
